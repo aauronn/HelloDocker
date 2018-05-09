@@ -1,0 +1,38 @@
+﻿<form novalidate #theForm="ngForm">
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">{{title}}</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+            <!--<span aria-hidden="true">&times;</span>-->
+            <i class="fa fa-times"></i>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>{{title}}</h2>
+
+                <div class="form-group" [ngClass]="{'has-error': name.touched && name.invalid}">
+                    <label class="control-label" for="name">Name</label>
+                    <input class="form-control" type="text" name="name" [(ngModel)]="city.name" #name="ngModel" required />
+                    <span *ngIf="name.touched && name.invalid && name.errors.required" class="text-danger">Username is required!</span>
+                </div>
+                <div class="form-group" [ngClass]="{'has-error': description.touched && description.invalid}">
+                    <label class="control-label" for="description">Description</label>
+                    <input type="text" class="form-control" name="description" [(ngModel)]="city.description" #description="ngModel" required />
+                    <span *ngIf="description.touched && description.invalid && description.errors.required" class="text-danger">Password is required</span>
+                </div>
+
+
+                <div class="form-group pull-right">
+                    
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">{{closeBtnName}}</button>
+        <!--<a routerLink="/cities" class="btn btn btn-default">Cancel</a>-->
+        <input type="submit" value="Add City" class="btn btn-primary" (click)="addItem(city)" [disabled]="theForm.invalid" />
+    </div>
+</form>

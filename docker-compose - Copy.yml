@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  hellodockerwin:
+    image: hellodockerwin:latest
+    networks:
+      - dotnetcoreapp-network
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80"
+  
+  mssqlserver:
+    container_name: mssqlserver
+    image: microsoft/mssql-server-windows-developer
+    ports:
+      - "1433:1433"
+    volumes:
+      - "C:/temp/:C:/temp/"
+    environment:
+      sa_password: Password123!
+      ACCEPT_EULA: "Y"
+    networks:
+      - dotnetcoreapp-network
+
+networks:
+  dotnetcoreapp-network:
+    driver: nat
+    
