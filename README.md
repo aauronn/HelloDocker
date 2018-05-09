@@ -1,6 +1,6 @@
 # HelloDocker
 
-This is a demo project for Linux Containers
+This is a demo project for Linux Containers using Visual Studio 2017 with Docker for Windows.
 
 This uses:
 - .Net Core 2
